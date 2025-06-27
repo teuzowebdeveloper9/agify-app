@@ -1,38 +1,84 @@
-# sv
+# Aplicativo Estimador de Idade
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Este é um aplicativo simples feito em Svelte que estima a idade de uma pessoa com base no nome digitado, utilizando a API Agify.
 
-## Creating a project
+## Funcionalidades
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Campo de input para digitar o nome
+- Requisição automática à API após digitar (com debounce)
+- Exibe a idade estimada para o nome informado
+- Atualiza a URL com o nome digitado (querystring)
+- Não faz requisição à API se o input estiver vazio
+- Usa a função `load()` do SvelteKit para fazer a requisição
+- Design responsivo com CSS puro personalizado
 
-```bash
-# create a new project in the current directory
-npx sv create
+## Screenshots
 
-# create a new project in my-app
-npx sv create my-app
+![image](https://github.com/user-attachments/assets/002d7794-b4ec-404b-8a34-8a7b2c0dd399)
+
+![image](https://github.com/user-attachments/assets/98a5adca-d1ec-4e2b-a8f6-c82585e506db)
+
+![image](https://github.com/user-attachments/assets/620623b9-039d-4aa1-9d6d-5b318d2f7619)
+
+
+## Como Rodar
+
+### Pré-requisitos
+
+- Node.js (versão 14 ou superior recomendada)
+- npm (vem junto com o Node.js)
+
+### Instalação
+
+1. Clone o repositório:
+git clone [url-do-seu-repositorio]
+
+
+plainText
+
+2. Entre na pasta do projeto:
+cd agify-app
+
+
+plainText
+
+3. Instale as dependências:
+npm install
+
+
+plainText
+
+### Executando o Aplicativo
+
+Para rodar o servidor de desenvolvimento, use:
+
 ```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+```
+Depois, abra no navegador o endereço:
+```
+http://localhost:5173
 ```
 
-## Building
 
-To create a production version of your app:
+## Como Funciona
 
-```bash
-npm run build
-```
+- O usuário digita um nome no campo de texto.
+- Após o usuário parar de digitar por cerca de 700ms (debounce), o aplicativo atualiza a URL com o nome digitado na querystring.
+- A função `load()` do SvelteKit é usada para fazer a requisição à API Agify, buscando a idade estimada para o nome.
+- Se o campo estiver vazio, a página não faz a requisição nem recarrega.
+- O resultado é exibido automaticamente na tela, sem necessidade de apertar Enter ou clicar em botão.
 
-You can preview the production build with `npm run preview`.
+## Tecnologias Usadas
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- SvelteKit (Svelte 4 ou 5)
+- JavaScript puro
+- CSS puro dentro do componente Svelte (`<style>`)
+- ESLint para manter a identação e qualidade do código
+- Git para controle de versão
+
+## Observações
+
+- A URL atualiza dinamicamente para que possa ser copiada e colada, mantendo o resultado da consulta.
+- O CSS foi feito manualmente, sem frameworks ou preprocessadores, para estilizar o input e o layout de forma simples e agradável.
